@@ -11,26 +11,34 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = false;
+  boot = {
+    loader = {
+      # systemd-boot.enable = true;
+      efi.canTouchEfiVariables = false;
+    };
+    kernelParams = ["apple.dcp.show_notch=1"];
+    # kernelPackages = pkgs.linuxPackages_zen;
   };
 
-  hardware.asahi = {
-    peripheralFirmwareDirectory = ./firmware;
-    useExperimentalGPUDriver = true;
-    experimentalGPUInstallMode = "overlay";
+  hardware = {
+    asahi = {
+      peripheralFirmwareDirectory = ./firmware;
+      useExperimentalGPUDriver = true;
+      experimentalGPUInstallMode = "driver";
+      setupAsahiSound = false;
+      withRust = true;
+    };
+    graphics = {
+      enable = true;
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
-
-  boot.kernelParams = ["apple.dcp.show_notch=1"];
-
-  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "gau"; # Define your hostname.
-  hardware.graphics = {
-    enable = true;
-  };
-
+  
   nixpkgs.overlays = let
     stablepkgs = inputs.stablepkgs.legacyPackages.${pkgs.system};
   in [
@@ -48,7 +56,7 @@
   services.xserver.enable = false;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -56,7 +64,11 @@
     variant = "";
   };
   
-  # Install firefox.
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  programs.dconf.enable = true;
   programs.hyprland.enable = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -6,9 +6,9 @@
         layer = "top";
         position = "top";
         mode = "dock";
-	exclusive = true;
-	passthrough = false;
-	height = 0;
+        exclusive = true;
+        passthrough = false;
+        height = 0;
         reload-style-on-change = true;
         margin = "10px 0px 0px 0px";
         modules-left = ["clock" "hyprland/workspaces"];
