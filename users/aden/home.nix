@@ -3,6 +3,7 @@
   imports = [
     ../../home/core.nix
     ../../home/linux/${system}    
-    ../../home/utils
+    # ../../home/packages
+    ../../home/packages/${system}
   ];
 }

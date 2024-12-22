@@ -3,6 +3,6 @@
     ../shell
     ../hyprland/desktop
     ../waybar/desktop
-    ../packages/aarch64
+    # ../packages/aarch64
   ];
 }

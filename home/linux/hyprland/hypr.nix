@@ -239,8 +239,8 @@
         border_size = "4";
         #
         # the dot is a hyprland name, not nix syntax, so we escape it
-        "col.active_border" = "rgb(545975)";
-        "col.inactive_border" = "rgb(24273A)";
+        # "col.active_border" = "rgb(545975)";
+        # "col.inactive_border" = "rgb(24273A)";
         layout = "dwindle";
         resize_on_border = "true";
       };
@@ -256,7 +256,7 @@
 
       decoration = {
         rounding = "3";
-        drop_shadow = "false";
+        # drop_shadow = "false";
         dim_special = "0.3";
         blur = {
           enabled = "yes";
@@ -282,17 +282,17 @@
         hide_cursor = true;
         grace = 1;
       };
-      background = {
-        monitor = "";
-        path = "screenshot";
-        blur_passes = 3;
-        blur_size = 7;
-        noise = 1.17e-2;
-        contrast = 0.8916;
-        brightness = 0.8172;
-        vibrancy = 0.1696;
-        vibrancy_darkness = 0.0;
-      };
+      # background = {
+      #   monitor = "";
+      #   path = "screenshot";
+      #   blur_passes = 3;
+      #   blur_size = 7;
+      #   noise = 1.17e-2;
+      #   contrast = 0.8916;
+      #   brightness = 0.8172;
+      #   vibrancy = 0.1696;
+      #   vibrancy_darkness = 0.0;
+      # };
       input-field = {
         monitor = "";
         size = "200, 50";
@@ -301,16 +301,16 @@
         dots_spacing = 0.15;
         dots_center = false;
         dots_rounding = -1;
-        outer_color = "rgb(151515)";
-        inner_color = "rgb(200, 200, 200)";
-        font_color = "rgb(10, 10, 10)";
+        # outer_color = "rgb(151515)";
+        # inner_color = "rgb(200, 200, 200)";
+        # font_color = "rgb(10, 10, 10)";
         fade_on_empty = true;
         fade_timeout = 1000;
         placeholder_text = "<i>Input Password...</i>";
         hide_input = false;
         rounding = -1;
-        check_color = "rgb(204, 136, 34)";
-        fail_color = "rgb(204, 34, 34)";
+        # check_color = "rgb(204, 136, 34)";
+        # fail_color = "rgb(204, 34, 34)";
         fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
         fail_timeout = 2000;
         fail_transition = 300;

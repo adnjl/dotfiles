@@ -13,6 +13,7 @@ in {
       lutris
       wine
       sbctl
+      spotify
       r2modman
       signal-desktop
       google-chrome
@@ -20,5 +21,8 @@ in {
       inputs.zen-browser.packages.${pkgs.system}.default
       inputs.nvchad4nix.packages.${pkgs.system}.nvchad
     ]);
+  # home.sessionVariables = {
+  #   DEFAULT_BROWSER = "${pkgs.zen-browser}/bin/zen";
+  # };
 } 
 

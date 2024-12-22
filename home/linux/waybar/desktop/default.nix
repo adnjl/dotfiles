@@ -1,4 +1,8 @@
 {
+  lib,
+  ...
+}:
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -8,128 +12,116 @@
         mode = "dock";
         exclusive = true;
         passthrough = false;
-        height = 0;
+        height = 30;
         reload-style-on-change = true;
-        margin = "10px 0px 0px 0px";
-        modules-left = ["clock" "hyprland/workspaces"];
-        modules-center = ["hyprland/window"];
-        modules-right = ["tray" "network" "cpu" "battery" "backlight" "pulseaudio" "pulseaudio#microphone"];
+        margin-top = 10;
+        width = 1300;
+        modules-left = [
+        "custom/padd"
+        "custom/l_end" "hyprland/workspaces" "custom/r_end"
+        "custom/padd"]; # "hyprland/window"
+        # modules-center = ["hyprland/workspaces"];
+        # modules-right = ["tray" "network" "cpu" "battery" "backlight" "pulseaudio" "pulseaudio#microphone"];
+        # modules-right = ["tray" "pulseaudio" "network" "clock" "cpu"];
+        modules-right = [
+            "custom/padd"
+            "custom/l_end" "custom/audio-icon" "pulseaudio" "custom/r_end"
+            "custom/padd"
+            "custom/l_end" "custom/network-icon" "network" "custom/r_end"
+            "custom/padd"
+            "custom/l_end" "clock" "custom/r_end"
+            "custom/padd"
+            "custom/l_end" "custom/cpu-icon" "cpu" "custom/r_end"
+            "custom/padd"
+        ];
+
+        "custom/audio-icon" = {
+          format= " ";
+          interval= "once";
+          tooltip= false;
+        };
+
+        "custom/network-icon" = {
+          format = "󰤨 ";
+          interval = "once";
+          tooltip = false;
+        };
         
-	"hyprland/window" = {
-	  format = "{}";
-	};
-
-	"hyprland/workspaces" = {
-          disable-scroll = true;
-	  all-outputs = true;
-	  on-click = "activate";
-	  show-special = true;
-	  format = "{icon}";
-          format-icons = {
-            active = "";
-            default = "";
-          };
-
-	};
-
-        tray = {
-	  icon-size = 13;
-	  spacing = 10;
-	};
-
-
-        clock = {
-	  format = "{:%b %d | %H:%M:%S}";
-	  interval = 1;
-	  rotate = 0;
-	  tooltip-format = "<tt>{calendar}</tt>";
-	  calendar = {
-	    mode = "month";
-	    mode-mon-col = 3;
-	    on-scroll = 1;
-	    on-click-right = "mode";
-	    format = {
-	      months = "<span color='#a6adc8'><b>{}</b></span>";
-	      weekdays = "<span color='#a6adc8'><b>{}</b></span>";
-	      today = "<span color='#a6adc8'><b>{}</b></span>";
-	      days = "<span color='#555869'><b>{}</b></span>";
-	    };
-	  };
-	};
-	
-	backlight = {
-          device = "intel_backlight";
-          format = "{icon} {percent}%";
-          format-icons = ["󰃞" "󰃟" "󰃠"];
-	  min-length = 6;
+        "custom/cpu-icon" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
         };
-	battery = {
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 20;
-          };
-          format = "{icon} {capacity}%";
-          format-icons = ["󰁻" "󰁽" "󰁿" "󰂀" "󰁹"];
-        };
-	pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-bluetooth = "{icon}  {volume}%";
-          format-bluetooth-muted = "  {icon}";
-          format-muted = "  Muted";
-          format-source = " {volume}%";
-          format-source-muted = "  Muted";
-          format-icons = {default = ["" "" ""];};
-        };
-	
-	pulseaudio.microphone = {
-          format = "{icon}  {volume}%";
-          format-bluetooth = "{icon}  {volume}%";
-          format-bluetooth-muted = "  {icon}";
-          format-muted = "  Muted";
-          format-source = " {volume}%";
-          format-source-muted = "  Muted";
-          format-icons = {default = ["" "" ""];};
-	  on-click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-	};
 
         cpu = {
           interval = 10;
-          format = "󰍛 ";
-	  format-alt = "{icon0}{icon1}{icon2}{icon3}";
-	  format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+          format = "{usage}%";
+          rotate = 0;
+          tooltip = false;
+        };
+        
+        "hyprland/workspaces" = {
+          format = "<span font='12px'>{icon}</span>";
+          format-icons = {
+              active = "<big>󱨇</big>";
+              default = "<big></big>";
+          };
+          disable-scroll = true;
+          rotate = 0;
+          all-outputs = true;
+          active-only = false;
+          on-click = "activate";
+          persistent-workspaces = {
+            "*" = 5;
+          };
+        };
+        
+        network = {
+          tooltip = false;
+          format-wifi = "{essid}";
+          rotate = 0;
+          format-ethernet = "󰈀 ";
+          format-linked = "󰈀 {ifname} (No IP)";
+          format-disconnected = "DISCONNECTED";
+          interval = 2;
         };
 
-        memory = {
-	  states = {
-	    c = 90;
-	    h = 60;
-	    m = 30;
-	  };
-          interval = 10;
-          format = "󰾆 {used}GB";
-	  format-m = "󰾅 {used}GB";
-	  format-h = "󰓅 {used}GB";
-	  format-c = " {used}GB";
-	  format-alt = "󰾆 {percentage}%";
-	  max-length = 10;
-	  tooltip = true;
-	  tooltip-format = "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB";
+        pulseaudio = {
+          format = "{volume} %";
+          rotate = 0;
+          format-muted = "MUTE";
+          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          scroll-step = 5;
+          tooltip = false;
         };
-               
-        network = {
-        tooltip = true;
-        format-wifi = " ";
-        format-ethernet = "󰈀 ";
-        tooltip-format = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>";
-        format-linked = "󰈀 {ifname} (No IP)";
-        format-disconnected = "󰖪 ";
-        tooltip-format-disconnected = "Disconnected";
-        interval = 2;
+        clock = {
+          format = "{:%I:%M %p / %d %B}";
+          rotate = 0;
+          ormat-alt = "{:%I:%M %p / %d %B}";
+          tooltip = false;
+        };
+
+
+        "custom/l_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+
+        "custom/r_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+        };
+
+        "custom/padd" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
         };
       };
     };
-    style = ./waybar.css;
+    style = lib.mkForce ./waybar.css;
     systemd.enable = true;
   };
 }

@@ -1,3 +1,20 @@
+# environment.systemPackages = with pkgs; [
+  #   neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #
+  #   wget
+  #   curl
+  #   git
+  #   sysstat
+  #   lm_sensors # for `sensors` command
+  #   # minimal screen capture tool, used by i3 blur lock to take a screenshot
+  #   # print screen key is also bound to this tool in i3 config
+  #   scrot
+  #   neofetch
+  #   xfce.thunar # xfce4's file manager
+  #   nnn # terminal file manager
+  # ];  
+  #
+  
 pkgs:
 with pkgs;[
   #core
@@ -26,6 +43,8 @@ with pkgs;[
   p7zip
 
   # utils
+  nnn
+  git
   nurl # helps fetch git data for nixpkgs
   wget
   curl
@@ -39,10 +58,8 @@ with pkgs;[
   xfce.thunar
 
   # desktop apps
-  dolphin
   firefox-devedition
   vesktop
-  spotify
 
   # fun
   ani-cli
