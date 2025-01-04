@@ -12,7 +12,7 @@
         mode = "dock";
         exclusive = true;
         passthrough = false;
-        height = 30;
+        height = 15;
         reload-style-on-change = true;
         margin-top = 10;
         width = 1300;

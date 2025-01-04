@@ -19,10 +19,6 @@ in {
       google-chrome
       bitwarden-cli
       inputs.zen-browser.packages.${pkgs.system}.default
-      inputs.nvchad4nix.packages.${pkgs.system}.nvchad
     ]);
-  # home.sessionVariables = {
-  #   DEFAULT_BROWSER = "${pkgs.zen-browser}/bin/zen";
-  # };
-} 
+  } 
 

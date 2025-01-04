@@ -38,8 +38,8 @@
         "$mod+Shift, Q, killactive"
         "$mod, W, togglefloating"
         "$mod, V, togglesplit"
-        "$mod, Return, fullscreen, 1"
-        "$mod+Shift, Return, fullscreen"
+        "$mod, F, fullscreen, 1"
+        "$mod+Shift, F, fullscreen"
 	"$mod+Ctrl, Escape, exec, killall waybar || waybar"
 
         # Move around

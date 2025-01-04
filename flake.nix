@@ -12,9 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,11 +30,6 @@
 
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvchad4nix = {
-      url = "github:NvChad/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -94,8 +86,6 @@
             }
           ];
         };
-
-
     };
   };
 }

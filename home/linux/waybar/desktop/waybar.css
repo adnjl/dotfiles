@@ -2,13 +2,13 @@
    border: none;
    border-radius: 0px;
    font-family: "JetBrainsMono Nerd Font";
-   font-size: 10px;
-   min-height: 30px;
+   font-size: 11px;
+   min-height: 15px;
  }
 
  window#waybar {
    /*background: #1d2021;*/
-   border-radius: 10px;
+   border-radius: 8px;
  }
 
  #workspaces button {

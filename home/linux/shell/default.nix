@@ -8,16 +8,11 @@
       window_padding_width = "8 8 0";
       confirm_os_window_close = -1;
       shell_integration = "enabled";
-      enable_audio_bell = "no";
-      # background_opacity = "0.9";
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
-      # action_alias = "kitty_scrollback_nvim kitten /home/youwen/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py";
       scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
     };
     keybindings = {
-      # "kitty_mod+h" = "kitty_scrollback_nvim";
-      # "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
       "kitty_mod+h" = "show_scrollback";
     };
   };
@@ -70,11 +65,11 @@
     set-option -g status-interval 1
     set-option -g status-justify centre
     set-option -g status-keys vi
-    set-option -g status-position bottom
-    # set-option -g status-style fg='#dc5e95',bg='#161616'
+    set-option -g status-position top
+    set-option -g status-style fg='#dc5e95',bg='#161616'
     set-option -g status-left-length 30
     set-option -g status-left-style default
-    # set-option -g status-left "#[fg=#ef85b4]#(whoami)#[default]"
+    set-option -g status-left "#[fg=#ef85b4]#(whoami)#[default]"
     set-option -g status-right-length 140
     set-option -g status-right-style default
     set-option -g status-right "#[fg=green,bg=default,bright]#(tmux-mem-cpu-load -a 0) "
@@ -96,14 +91,8 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-	#    settings = {
-	#      package.disabled = true;
-	#      character = {
-	# #success_symbol = "[ ](#363644)";
-	# #error_symbol = "[ ](#363644)"; 
-	#      };
-	#    };
   };
+
   home.file.".config/starship.toml".text = builtins.readFile ./custom.toml;
 
   programs.fish = {
@@ -158,8 +147,8 @@
 
   programs.zoxide = {
     enable = true;
-    # enableZshIntegration = true;
     enableFishIntegration = true;
+    enableBashIntegration = true;
   };
 
   programs.eza = {

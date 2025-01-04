@@ -60,7 +60,7 @@
     nix-direnv.enable = true;
   };
 
-    programs.fd.enable = true;
+  programs.fd.enable = true;
 
   programs.btop = {
     enable = true;
