@@ -8,13 +8,11 @@
 {
 
   # ============================= User related =============================
+  users.knownUsers = [ "soems" ];
   users.users.${username} = {
-    isNormalUser = true;
     description = username;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    uid = 501;
+    home = "/Users/${username}";
     ignoreShellProgramCheck = true;
     shell = pkgs.fish;
 

@@ -1,24 +1,7 @@
 { pkgs, inputs, ...}: {
 
- services.dunst = {
-    enable = true;
-  };
-  
-  services.easyeffects = {
-    enable = true;
-    package = pkgs.easyeffects;
-  };
-
   programs.bash.enable = true;
-  programs.fzf = {enable = true;};
   
-  programs.wlogout.enable = true;
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-  };
-
   programs.git = {
     enable = true;
     userName = "Aden Lung";
