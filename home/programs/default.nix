@@ -1,13 +1,14 @@
-{ pkgs, inputs, ...}: {
+{ pkgs, inputs, ... }:
+{
 
   programs.bash.enable = true;
-  
+
   programs.git = {
     enable = true;
     userName = "Aden Lung";
     userEmail = "soemscontact@gmail.com";
     delta.enable = true;
-    
+
     extraConfig = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
@@ -35,7 +36,7 @@
 
   programs.gh = {
     enable = true;
-    extensions = [pkgs.github-copilot-cli];
+    extensions = [ pkgs.github-copilot-cli ];
   };
 
   programs.direnv = {
@@ -52,7 +53,6 @@
       theme_background = false;
     };
   };
-
 
   programs.yazi = {
     enable = true;
@@ -81,8 +81,4 @@
       };
     };
   };
-
-  # programs.zen = {
-  #   enable = true;
-  # };
 }

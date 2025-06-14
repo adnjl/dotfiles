@@ -1,13 +1,14 @@
 { pkgs, ... }:
 {
+
   programs.kitty = {
     enable = true;
     themeFile = "Kanagawa_dragon";
     font.name = "CaskaydiaCove Nerd Font";
     settings = {
       shell = "${pkgs.fish}/bin/fish";
-      font_size = 12;
-      window_padding_width = "8 8 0";
+      font_size = 11;
+      window_padding_width = "20";
       confirm_os_window_close = -1;
       shell_integration = "no-sudo";
       allow_remote_control = "socket-only";
@@ -25,6 +26,9 @@
       "kitty_mod+h" = "show_scrollback";
     };
   };
+
+  # home.file.".config/kitty/kitty.conf".text = builtins.readFile ./kitty.conf;
+
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
@@ -32,8 +36,6 @@
 
     extraConfig = builtins.readFile ./wezterm.lua;
   };
-
-  # home.file.".config/kitty/kitty.conf".text = builtins.readFile ./kitty.conf;
 
   programs.tmux = {
     enable = true;
@@ -86,6 +88,7 @@
       fish_vi_key_bindings
       set -g fish_greeting
     '';
+    # eval "$(/opt/homebrew/bin/brew shellenv)"
     plugins = [
       {
         name = "autopair";

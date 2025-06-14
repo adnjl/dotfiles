@@ -2,9 +2,11 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   createCommon = import ../packages.nix;
-in {
+in
+{
   home.packages =
     (createCommon pkgs)
     ++ (with pkgs; [
@@ -18,7 +20,5 @@ in {
       signal-desktop
       google-chrome
       bitwarden-cli
-      inputs.zen-browser.packages.${pkgs.system}.default
     ]);
-  } 
-
+}

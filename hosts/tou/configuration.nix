@@ -15,11 +15,13 @@
     # Include the results of the hardware scan.
     ../../modules/darwin-system.nix
   ];
-
-  networking.hostName = "niu"; # Define your hostname.
+  networking.hostName = "tou"; # Define your hostname.
   nixpkgs.hostPlatform = "aarch64-darwin";
-  services.nix-daemon.enable = true;
   programs.fish.enable = true;
-
+  ids.gids.nixbld = 350;
+  launchd.user.agents = {
+    yabai.serviceConfig.EnvironmentVariables.SHELL = "/bin/dash";
+    skhd.serviceConfig.EnvironmentVariables.SHELL = "/bin/dash";
+  };
   system.stateVersion = 4;
 }

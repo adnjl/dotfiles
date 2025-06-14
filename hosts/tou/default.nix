@@ -11,5 +11,6 @@
     ../../modules/darwin/brew
     ../../modules/darwin/skhd
     ../../modules/darwin/yabai
+
   ];
 }

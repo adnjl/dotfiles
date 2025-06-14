@@ -63,5 +63,11 @@ pkgs: with pkgs; [
   # fun
   ani-cli
 
-  gcc
+  # gcc
+  # languages
+  go
+  cargo
+  SDL2
+  mupdf
+  tytanic
 ]

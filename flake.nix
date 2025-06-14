@@ -9,13 +9,12 @@
 
     # darwin modules
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     homebrew-core = {
@@ -34,11 +33,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-colors.url = "github:misterio77/nix-colors";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -46,7 +40,7 @@
     };
 
     wallpapers = {
-      url = "github:somenians/wallpapers";
+      url = "github:adnjl/wallpapers";
       flake = false;
     };
 
@@ -59,6 +53,7 @@
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -123,34 +118,9 @@
               }
             ];
           };
-
-        # niu =
-        #   let
-        #     username = "aden";
-        #     system = "aarch64-darwin";
-        #     specialArgs = {
-        #       inherit inputs;
-        #       inherit username;
-        #       inherit system;
-        #     };
-        #   in
-        #   nixpkgs.lib.nixosSystem {
-        #     inherit specialArgs;
-        #     modules = [
-        #       ./hosts/niu
-        #       home-manager.nixosModules.home-manager
-        #       {
-        #         home-manager = {
-        #           useGlobalPkgs = true;
-        #           useUserPackages = true;
-        #           extraSpecialArgs = inputs // specialArgs;
-        #           users.${username} = import ./users/${username}/darwin-home.nix;
-        #         };
-        #       }
-        #     ];
-        #   };
       };
-      darwinConfigurations.niu =
+
+      darwinConfigurations.tou =
         let
           username = "soems";
           system = "aarch64-darwin";
@@ -163,12 +133,11 @@
         nix-darwin.lib.darwinSystem {
           inherit specialArgs;
           modules = [
-            ./hosts/niu
+            ./hosts/tou
+
             home-manager.darwinModules.home-manager
             {
               home-manager = {
-
-                # users.users.${username}.home = "/Users/soems";
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = inputs // specialArgs;
