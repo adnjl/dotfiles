@@ -1,8 +1,8 @@
 {
   imports = [
-    ../shell
-    ../hyprland/desktop
-    ../waybar/desktop
+    ../../desktop/shell
+    ../../desktop/hyprland/desktop
+    ../../desktop/waybar/desktop
     # ../packages/aarch64
   ];
 }

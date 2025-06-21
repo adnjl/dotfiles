@@ -1,10 +1,10 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 {
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   services = {
-    dbus.packages = [pkgs.gcr];
+    dbus.packages = [ pkgs.gcr ];
 
     geoclue2.enable = true;
 

@@ -18,22 +18,7 @@
 pkgs: with pkgs; [
   #core
   neofetch
-  # wl-clipboard
-  # grim
-  # slurp
-  # swappy
-  # pavucontrol
-  # waypaper
-  # swaybg
-  # pamixer
-  # brightnessctl
   neovim
-
-  # bibata-cursors
-  # libsForQt5.qtstyleplugin-kvantum
-  # libsForQt5.qt5ct
-  # papirus-icon-theme
-  # libsForQt5.qt5ct
 
   # archives
   zip
@@ -49,25 +34,12 @@ pkgs: with pkgs; [
   curl
   nix-output-monitor
 
-  # system tools
-  # pciutils # lspci
-  # usbutils # lsusb
-
-  # desktop utils
-  # xfce.thunar
-
-  # desktop apps
-  # firefox-devedition
-  vesktop
-
   # fun
   ani-cli
 
   # gcc
-  # languages
   go
   cargo
   SDL2
   mupdf
-  tytanic
 ]
