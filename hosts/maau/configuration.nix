@@ -2,35 +2,43 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ../../modules/system.nix
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ../../modules/system.nix
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
-# boot.loader = {
-#   efi.canTouchEfiVariables = true;
-#   timeout = 15;
-#   # Lanzaboote currently replaces the systemd-boot module.
-#   # This setting is usually set to true in configuration.nix
-#   # generated at installation time. So we force it to false
-#   # for now.
-#   systemd-boot = {
-#     enable = lib.mkForce false;
-#     consoleMode = "auto";
-#   };
-# };
+  # boot.loader = {
+  #   efi.canTouchEfiVariables = true;
+  #   timeout = 15;
+  #   # Lanzaboote currently replaces the systemd-boot module.
+  #   # This setting is usually set to true in configuration.nix
+  #   # generated at installation time. So we force it to false
+  #   # for now.
+  #   systemd-boot = {
+  #     enable = lib.mkForce false;
+  #     consoleMode = "auto";
+  #   };
+  # };
 
-# boot.lanzaboote = {
-#   enable = true;
-#   pkiBundle = "/etc/secureboot";
-# };
-
-
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   pkiBundle = "/etc/secureboot";
+  # };
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30d";
+  };
   boot.loader = {
 
     efi.canTouchEfiVariables = true;
@@ -55,43 +63,43 @@
       '';
     };
   };
+  boot.kernelParams = [ "nvidia_drm.modeset=1" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "maau"; # Define your hostname.
 
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = false;
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      open = false;
+    };
   };
 
-  hardware.graphics = {
-    enable = true;
-  };
-
-# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Enable networking
   networking.networkmanager.enable = true;
 
   services.flatpak.enable = true;
 
-# Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-  
-  # Install firefox.
   programs.hyprland.enable = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

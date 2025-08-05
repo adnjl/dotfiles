@@ -36,7 +36,6 @@
 
   programs.gh = {
     enable = true;
-    extensions = [ pkgs.github-copilot-cli ];
   };
 
   programs.direnv = {
@@ -53,6 +52,8 @@
       theme_background = false;
     };
   };
+
+  programs.htop.enable = true;
 
   programs.yazi = {
     enable = true;

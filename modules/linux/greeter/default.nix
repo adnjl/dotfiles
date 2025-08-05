@@ -1,26 +1,28 @@
-
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  sddm-theme = inputs.silentSDDM.packages.${pkgs.system}.default.override {
+    theme = "rei";
+  };
+in
 {
-  services.greetd = {
+  environment.systemPackages = [
+    sddm-theme
+    sddm-theme.test
+  ];
+  qt.enable = true;
+  services.displayManager.sddm = {
+    package = pkgs.kdePackages.sddm; # use qt6 version of sddm
     enable = true;
+    theme = sddm-theme.pname;
+    # the following changes will require sddm to be restarted to take
+    # effect correctly. It is recomend to reboot after this
+    extraPackages = sddm-theme.propagatedBuildInputs;
     settings = {
-      default_session = {
-        command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember --greeting "Welcome, generation $(readlink /nix/var/nix/profiles/system | grep -o '[0-9]*'). Access is restricted to authorized personnel only."
-        '';
-        user = "greeter";
+      # required for styling the virtual keyboard
+      General = {
+        GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
+        InputMethod = "qtvirtualkeyboard";
       };
     };
-  };
-
-  systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-    StandardInput = "tty";
-    StandardOutput = "tty";
-    StandardError = "journal"; # Without this errors will spam on screen
-    # Without these bootlogs will spam on screen
-    TTYReset = true;
-    TTYVHangup = true;
-    TTYVTDisallocate = true;
   };
 }

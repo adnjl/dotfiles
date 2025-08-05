@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -19,13 +20,6 @@ in
 
   programs.fzf = {
     enable = true;
-  };
-
-  programs.wlogout.enable = true;
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
   };
 
 }

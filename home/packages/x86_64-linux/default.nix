@@ -11,7 +11,8 @@ in
     (createCommon pkgs)
     ++ (with pkgs; [
       bitwarden-desktop
-      modrinth-app
+      # modrinth-app-unwrapped
+      prismlauncher
       lutris
       wine
       sbctl

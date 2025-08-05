@@ -1,45 +1,49 @@
-# environment.systemPackages = with pkgs; [
-#   neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-#
-#   wget
-#   curl
-#   git
-#   sysstat
-#   lm_sensors # for `sensors` command
-#   # minimal screen capture tool, used by i3 blur lock to take a screenshot
-#   # print screen key is also bound to this tool in i3 config
-#   scrot
-#   neofetch
-#   xfce.thunar # xfce4's file manager
-#   nnn # terminal file manager
-# ];
-#
-
 pkgs: with pkgs; [
-  #core
-  neofetch
+  ## Core CLI
   neovim
+  neofetch
+  nnn
+  git
+  wget
+  curl
+  nix-output-monitor
+  firefox-devedition
+  meson
 
-  # archives
+  ## Archives
   zip
   xz
   unzip
   p7zip
 
-  # utils
-  nnn
-  git
-  nurl # helps fetch git data for nixpkgs
-  wget
-  curl
-  nix-output-monitor
+  ## Dev tools
+  gcc
+  gnumake
+  cmake
+  pkg-config
+  nurl
 
-  # fun
-  ani-cli
-
-  # gcc
+  ## Programming languages
   go
   cargo
+
+  ## Graphics / GUI
   SDL2
+  libGL
+  mesa
+  mesa-gl-headers
+  libxkbcommon
+  xorg.libX11
+  xorg.libXi
+  xorg.libXcursor
+  xorg.libXrandr
+  xorg.libXext
+  xorg.libXfixes
+
+  ## Misc
   mupdf
+  ani-cli
+  gpu-screen-recorder
+  vlc
+  tty-clock
 ]

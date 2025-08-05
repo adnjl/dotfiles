@@ -1,30 +1,22 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  # programs.kitty = {
-  #   enable = true;
-  #   themeFile = "Kanagawa_dragon";
-  #   font.name = "CaskaydiaCove Nerd Font";
-  #   settings = {
-  #     shell = "${pkgs.fish}/bin/fish";
-  #     font_size = 11;
-  #     window_padding_width = "20";
-  #     confirm_os_window_close = -1;
-  #     shell_integration = "no-sudo";
-  #     allow_remote_control = "socket-only";
-  #     background_opacity = 0.95;
-  #     hide_window_decorations = "titlebar-only";
-  #     background_blur = 32;
-  #   };
-  #   extraConfig = ''
-  #     if command -v zoxide > /dev/null
-  #       zoxide init fish | source
-  #     end
-  #   '';
-  #
-  #   keybindings = {
-  #     "kitty_mod+h" = "show_scrollback";
-  #   };
-  # };
+  programs.kitty = {
+    enable = true;
+    themeFile = "Catppuccin-Mocha";
+    font.name = "CaskaydiaCove Nerd Font";
+    settings = {
+      font_size = 12;
+      window_padding_width = "8 8 0";
+      confirm_os_window_close = -1;
+      shell_integration = "enabled";
+      allow_remote_control = "socket-only";
+      listen_on = "unix:/tmp/kitty";
+      scrollback_pager = ''nvim --noplugin -c "set signcolumn=no showtabline=0" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "'';
+    };
+    keybindings = {
+      "kitty_mod+h" = "show_scrollback";
+    };
+  };
 
   programs.wezterm = {
     enable = true;
@@ -37,20 +29,9 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
-    # shell = "${pkgs.fish}/bin/fish";
     shortcut = "a";
     keyMode = "vi";
-    # plugins = with pkgs; [
-    #   # {
-    #   #   plugin = tmux-super-fingers;
-    #   #   extraConfig = "set -g @super-fingers-key f";
-    #   # }
-    #   # tmuxPlugins.better-mouse-mode
-    #   # tmuxPlugins.tmux-mem-cpu-load
-    #   pkgs.tmuxPlugins.tpm
-    #   pkgs.tmuxPlugins.tmux-resurrect
-    # ];
-    extraConfig = builtins.readFile ./.tmux.conf;
+    extraConfig = lib.mkForce (builtins.readFile ./.tmux.conf);
   };
 
   programs.starship = {
@@ -58,15 +39,15 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    settings = lib.mkForce (pkgs.lib.importTOML ./starship.toml);
   };
-
-  # home.file.".config/starship.toml".text = builtins.readFile ./starship.toml;
 
   programs.fish = {
     enable = true;
     shellAliases = {
       ls = "eza -l --icons=auto";
       vim = "nvim";
+      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos/#maau";
     };
     interactiveShellInit = ''
       fish_vi_key_bindings

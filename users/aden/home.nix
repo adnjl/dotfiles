@@ -1,7 +1,13 @@
-{pkgs, inputs, system, ...}: {
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
+{
   imports = [
     ../../home/core.nix
-    ../../home/linux/${system}    
+    ../../home/system-env/${system}
     ../../home/packages/${system}
   ];
 }

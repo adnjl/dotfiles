@@ -1,56 +1,40 @@
  * {
-   border: none;
-   border-radius: 0px;
+   /* border: none; */
+   border-radius: 5px;
    font-family: "JetBrainsMono Nerd Font";
    font-size: 11px;
-   min-height: 15px;
+   font-weight: 600;
+   min-height: 10px;
+   opacity: 0.9;
  }
 
  window#waybar {
    /*background: #1d2021;*/
-   border-radius: 8px;
+   /* border-radius: 4px; */
  }
 
  #workspaces button {
    box-shadow: none;
    text-shadow: none;
    padding: 0px;
-   border-radius: 8px;
-   margin-top: 4px;
-   margin-bottom: 4px;
+   margin-top: 2px;
+   margin-bottom: 2px;
    margin-left: 0px;
    padding-left: 6px;
    padding-right: 10px;
    margin-right: 0px;
-   /*color: #504945;*/
-   animation: ws_normal 20s ease-in-out 1;
  }
 
  #workspaces button.active {
-   /* background: #2B2F38; */
-   /*color: #83a598;*/
-   /* margin-left: 1px; 
-    padding-left: 4px;
-    padding-right: 8px;
-    margin-right: 1px; */
    animation: ws_active 20s ease-in-out 1;
-   /* transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682); */
  }
 
- #workspaces button:not(.active):not(.empty):not(:hover) {
-   /*color: #fbf1c7;*/
- }
 
  #workspaces button:hover {
-   /*background: #504945;*/
-
    animation: ws_hover 20s ease-in-out 1;
    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
  }
 
- #workspaces button.active:hover {
-   /*color: #83a598;*/
- }
 
  #battery,
  #clock,
@@ -68,8 +52,6 @@
  #custom-cpu-icon,
  #custom-memory-icon,
  #custom-r_end {
-   /*color: #fbf1c7;*/
-   /*background: #282828;*/
    opacity: 1;
    margin: 8px 0px 8px 0px;
    padding-left: 4px;
@@ -77,8 +59,12 @@
  }
 
  #custom-cpu-icon,
- #custom-audio-icon,
- #custom-network-icon,
+ #custom-audio-icon {
+   font-size: 12px;
+ }
+ #custom-network-icon{
+   font-size: 12px;
+ }
  #custom-memory-icon {
    font-size: 16px;
 
@@ -100,7 +86,7 @@
  }
 
  #custom-power {
-   font-size: 20px;
+   font-size: 16px;
    padding-left: 3px;
    padding-right: 7px;
    /*color: #fb4934;*/

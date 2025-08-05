@@ -20,6 +20,12 @@
 
   };
 
+  security.wrappers.gsr-kms-server = {
+    source = lib.getExe' pkgs.gpu-screen-recorder "gsr-kms-server";
+    capabilities = "cap_sys_admin+ep";
+    owner = "root";
+    group = "root";
+  };
   # security.sudo.wheelNeedsPassword = false;
   # given the users in this list the right to specify additional substituters via:
   #    1. `nixConfig.substituers` in `flake.nix`

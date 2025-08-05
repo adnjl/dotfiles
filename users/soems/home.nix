@@ -9,7 +9,7 @@
 {
   imports = [
     ../../home/core.nix
-    ../../home/darwin/shell
+    ../../home/desktop/shell
     ../../home/packages/${system}
     ../../home/programs
   ];

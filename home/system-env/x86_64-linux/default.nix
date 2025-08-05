@@ -1,8 +1,8 @@
 {
   imports = [
     ../../desktop/shell
-    ../../desktop/hyprland/desktop
-    ../../desktop/waybar/desktop
+    ../../desktop/hyprland
+    ../../desktop/waybar
     ../../programs/x86_64-linux
   ];
 }
