@@ -39,6 +39,8 @@
           "custom/separator#blank"
           "pulseaudio"
           "custom/separator#blank"
+          "pulseaudio#microphone"
+          "custom/separator#blank"
           "custom/power"
         ];
 
@@ -63,8 +65,8 @@
             "5" = [ ];
           };
           format-icons = {
-            active = "";
-            default = "";
+            active = " ";
+            default = " ";
           };
         };
 
@@ -138,7 +140,8 @@
           format = "{format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
-          on-click = "pavucontrol -t 4";
+          # on-click = "pavucontrol -t 4";
+          on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
           tooltip-format = "{source_desc} | {source_volume}%";
           scroll-step = 5;
         };

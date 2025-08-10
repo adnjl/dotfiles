@@ -65,9 +65,7 @@
   };
   boot.kernelParams = [ "nvidia_drm.modeset=1" ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  networking.hostName = "maau"; # Define your hostname.
+  networking.hostName = "maau";
 
   hardware = {
     graphics = {
@@ -82,11 +80,10 @@
     };
   };
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Enable networking
   networking.networkmanager.enable = true;
-
-  services.flatpak.enable = true;
+  # networking.wireless.iwd.enable = true;
+  # networking.networkmanager.wifi.backend = "iwd";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -98,7 +95,10 @@
     layout = "us";
     variant = "";
   };
+
+  # Miscellaneous
   programs.hyprland.enable = true;
+  services.flatpak.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

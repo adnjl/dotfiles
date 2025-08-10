@@ -9,6 +9,7 @@ pkgs: with pkgs; [
   nix-output-monitor
   firefox-devedition
   meson
+  pulseaudio
 
   ## Archives
   zip

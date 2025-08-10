@@ -8,10 +8,14 @@ let
   commonPrograms = import ../default.nix { inherit pkgs inputs; };
 in
 {
-  imports = [ commonPrograms ];
-  services.dunst = {
-    enable = true;
-  };
+  imports = [
+    commonPrograms
+    ./swaync.nix
+    ./rofi
+  ];
+  # services.dunst = {
+  #   enable = true;
+  # };
 
   services.easyeffects = {
     enable = true;
