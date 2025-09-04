@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   fonts = {
+    fontconfig.enable = true;
     enableDefaultPackages = true;
     packages = with pkgs; [
       jetbrains-mono
@@ -12,6 +13,8 @@
       fira-code-symbols
       mplus-outline-fonts.githubRelease
       dina-font
+      ipafont
+      kochi-substitute
       proggyfonts
       (google-fonts.override { fonts = [ "Lora" ]; })
     ];

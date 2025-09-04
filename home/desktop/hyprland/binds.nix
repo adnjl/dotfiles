@@ -1,21 +1,4 @@
 { lib, pkgs, ... }:
-let
-  hyprnome = "${lib.getExe pkgs.hyprnome}";
-  # wlogoutLauncher = pkgs.writeShellScriptBin "wlogout-launch" ''
-  #   #!/usr/bin/env bash
-  #   A_1080=400
-  #   B_1080=200
-  #
-  #   if pgrep -x "wlogout" > /dev/null; then
-  #       pkill -x "wlogout"
-  #       exit 0
-  #   fi
-  #
-  #   resolution=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .height / .scale' | awk -F'.' '{print $1}')
-  #   hypr_scale=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .scale')
-  #   wlogout --protocol layer-shell -b 5 -T $(awk "BEGIN {printf \"%.0f\", $A_1080 * 1080 * $hypr_scale / $resolution}") -B $(awk "BEGIN {printf \"%.0f\", $B_1080 * 1080 * $hypr_scale / $resolution}") &
-  # '';
-in
 {
   # home.packages = [ wlogoutLauncher ];
   wayland.windowManager.hyprland.settings = {
@@ -33,12 +16,19 @@ in
       "$mod, F, fullscreen, 1"
       "$mod+Shift, F, fullscreen"
       "$mod+Ctrl, Escape, exec, killall waybar || waybar"
+      # "$mod+Shift, Space, overview:toggle"
 
       # Move around
       "$mod, $Left, movefocus, l"
       "$mod, $Right, movefocus, r"
       "$mod, $Up, movefocus, u"
       "$mod, $Down, movefocus, d"
+
+      # Move windows around
+      "$mod+Shift, $Left, movewindow, l"
+      "$mod+Shift, $Right, movewindow, r"
+      "$mod+Shift, $Up, movewindow, u"
+      "$mod+Shift, $Down, movewindow, d"
 
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
@@ -70,12 +60,6 @@ in
       # Special workspace
       "$mod, S, togglespecialworkspace"
       "$mod+Alt, S, movetoworkspacesilent, special"
-
-      # Move windows around
-      "$mod+Shift, $Left, movewindow, l"
-      "$mod+Shift, $Right, movewindow, r"
-      "$mod+Shift, $Up, movewindow, u"
-      "$mod+Shift, $Down, movewindow, d"
 
       "$mod+Ctrl+Shift, $Right, movetoworkspace, r+1"
       "$mod+Ctrl+Shift, $Left, movetoworkspace, r-1"

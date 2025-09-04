@@ -16,6 +16,15 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
+  };
+
   services.printing.enable = true;
   programs.dconf.enable = true;
   networking.firewall.enable = false;
@@ -28,7 +37,7 @@
     };
     openFirewall = true;
   };
-  
+
   environment.sessionVariables.MOZ_ENABLE_WAYLAND = 0;
 
   services.power-profiles-daemon = {
@@ -37,7 +46,7 @@
   security.polkit.enable = true;
 
   services = {
-    dbus.packages = [pkgs.gcr];
+    dbus.packages = [ pkgs.gcr ];
 
     geoclue2.enable = true;
   };

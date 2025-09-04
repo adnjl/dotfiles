@@ -11,12 +11,11 @@ in
     (createCommon pkgs)
     ++ (with pkgs; [
       bitwarden-desktop
-      # modrinth-app-unwrapped
       prismlauncher
       lutris
       wine
       sbctl
-      spotify
+      # spotify
       r2modman
       signal-desktop
       google-chrome
@@ -32,6 +31,7 @@ in
       swaybg
       pamixer
       brightnessctl
+      chafa
 
       bibata-cursors
       libsForQt5.qtstyleplugin-kvantum
@@ -48,6 +48,8 @@ in
 
       # desktop apps
       vesktop
+      inputs.zen-browser.packages.${pkgs.system}.default
+      # inputs.viu.packages.${pkgs.system}.default
 
     ]);
 }

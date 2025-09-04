@@ -69,7 +69,10 @@
       "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
       "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.gtk)$"
       "opacity 0.80 0.80,class:^(org.freedesktop.impl.portal.desktop.hyprland)$"
+
+      "pseudo, class:^(fcitx)$"
     ];
+
     layerrule = [
       "blur,rofi"
       "ignorezero,rofi"

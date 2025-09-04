@@ -15,16 +15,22 @@
     package = pkgs.hyprland;
     xwayland.enable = true;
     systemd.enable = true;
-    # plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
+    plugins = [
+      # inputs.hyprland-plugins.packages."${pkgs.system}".hyprspace
+      # legacyPackages.x86_64-linux.hyprlandPlugins.hyprspace
+      inputs.hyprscroller.packages."${pkgs.system}".hyprscroller
+    ];
     settings = {
       monitor = [
-        "DP-2, 1920x1080@144, 0x0, 1"
-        "DP-1, 1920x1080@60, 1920x0, 1"
+        "DP-1, 1920x1080@144, 0x0, 1"
+        "DP-2, 1920x1080@75, 1920x0, 1"
       ];
-      workspace = "1, monitor:DP-2";
+      workspace = "1, monitor:DP-1";
       exec-once = [
         "waypaper --restore"
         "swaybg"
+        "fcitx5 -d -r"
+        "fcitx5-remote -r"
       ];
       "$mod" = "SUPER";
       "$Left" = "H";
@@ -32,10 +38,10 @@
       "$Up" = "K";
       "$Down" = "J";
       env = [
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-        "HYPRCURSOR_SIZE,26"
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,26"
+        "HYPRCURSOR_THEME,Bibata-Original-Classic"
+        "HYPRCURSOR_SIZE,22"
+        "XCURSOR_THEME,Bibata-Original-Classic"
+        "XCURSOR_SIZE,22"
       ];
       dwindle = {
         pseudotile = "yes";
@@ -99,10 +105,6 @@
         force_no_accel = 1;
         follow_mouse = 1;
         accel_profile = "flat";
-      };
-      plugin.scroller = {
-        column_widths = "onethird onehalf twothirds one";
-        column_heights = "onethird onehalf twothirds one";
       };
     };
   };

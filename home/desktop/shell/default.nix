@@ -47,7 +47,8 @@
     shellAliases = {
       ls = "eza -l --icons=auto";
       vim = "nvim";
-      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos/#maau";
+      # rebuild = "sudo nixos-rebuild switch --flake ~/configs/dots/#maau";
+      rebuild = "nh os switch";
     };
     interactiveShellInit = ''
       fish_vi_key_bindings

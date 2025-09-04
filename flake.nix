@@ -33,6 +33,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    # hyprland.url = "github:hyprwm/hyprland/v0.50.1";
+    hyprscroller = {
+      url = "github:cpiber/hyprscroller/d3e447a22cfaae77ab1cf3931d23cfdb7c010a9c";
+      # inputs.hyprland.follows = "hyprland";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -58,6 +66,16 @@
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -82,9 +100,12 @@
             };
           in
           nixpkgs.lib.nixosSystem {
-            inherit specialArgs;
+            inherit system specialArgs;
             modules = [
               ./hosts/maau
+              inputs.chaotic.nixosModules.nyx-cache
+              inputs.chaotic.nixosModules.nyx-overlay
+              inputs.chaotic.nixosModules.nyx-registry
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -108,7 +129,7 @@
             };
           in
           nixpkgs.lib.nixosSystem {
-            inherit specialArgs;
+            inherit system specialArgs;
             modules = [
               ./hosts/gau
               home-manager.nixosModules.home-manager

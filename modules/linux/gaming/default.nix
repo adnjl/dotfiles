@@ -4,7 +4,8 @@
     protonup
     protonup-qt
 
-    osu-lazer
+    osu-lazer-bin
+    mangohud
   ];
 
   programs.gamescope.enable = true;

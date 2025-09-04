@@ -29,17 +29,14 @@ pkgs: with pkgs; [
   cargo
 
   ## Graphics / GUI
-  SDL2
-  libGL
   mesa
-  mesa-gl-headers
-  libxkbcommon
+  libGL
+  libGLU
   xorg.libX11
-  xorg.libXi
   xorg.libXcursor
   xorg.libXrandr
-  xorg.libXext
-  xorg.libXfixes
+  xorg.libXinerama
+  xorg.libXi
 
   ## Misc
   mupdf
@@ -47,4 +44,8 @@ pkgs: with pkgs; [
   gpu-screen-recorder
   vlc
   tty-clock
+  anki-bin
+  mpv
+  nh
+  cider
 ]

@@ -39,32 +39,37 @@
     automatic = true;
     options = "--delete-older-than 30d";
   };
-  boot.loader = {
+  boot = {
+    loader = {
 
-    efi.canTouchEfiVariables = true;
-    systemd-boot = {
-      enable = false;
-      consoleMode = "auto";
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = false;
+        consoleMode = "auto";
+      };
+      grub = {
+        enable = true;
+        useOSProber = true;
+        copyKernels = true;
+        efiSupport = true;
+        device = "nodev";
+        configurationLimit = 10;
+        extraEntries = ''
+          menuentry "Reboot" {
+            reboot
+          }
+          menuentry "Shutdown" {
+            halt
+          }
+        '';
+      };
     };
-    grub = {
-      enable = true;
-      useOSProber = true;
-      copyKernels = true;
-      efiSupport = true;
-      device = "nodev";
-      configurationLimit = 10;
-      extraEntries = ''
-        menuentry "Reboot" {
-          reboot
-        }
-        menuentry "Shutdown" {
-          halt
-        }
-      '';
-    };
+    kernelParams = [ "nvidia_drm.modeset=1" ];
+    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest_xen_dom0;
+    # kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
   };
-  boot.kernelParams = [ "nvidia_drm.modeset=1" ];
-
   networking.hostName = "maau";
 
   hardware = {
@@ -78,21 +83,26 @@
       powerManagement.enable = true;
       open = false;
     };
+    opentabletdriver.enable = true;
   };
 
-  # Enable networking
+  powerManagement.cpuFreqGovernor = "performance";
+
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.enable = true;
   # networking.networkmanager.wifi.backend = "iwd";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    displayManager.startx.enable = true;
+  };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
+    options = "";
     variant = "";
   };
 

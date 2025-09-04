@@ -1,0 +1,7 @@
+[17:46:30 2025-08-14] FETCHING Version 2.41.0
+[17:46:30 2025-08-14] CREATING /home/aden/.spicetify
+[17:46:30 2025-08-14] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.41.0/spicetify-2.41.0-linux-amd64.tar.gz
+[17:46:34 2025-08-14] EXTRACTING /home/aden/.spicetify/spicetify.tar.gz
+[17:46:34 2025-08-14] SETTING EXECUTABLE PERMISSIONS TO /home/aden/.spicetify/spicetify
+[17:46:34 2025-08-14] REMOVING /home/aden/.spicetify/spicetify.tar.gz
+[17:46:34 2025-08-14] APPENDING /home/aden/.spicetify to PATH in /home/aden/.config/fish/config.fish
