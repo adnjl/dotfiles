@@ -36,10 +36,10 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     # hyprland.url = "github:hyprwm/hyprland/v0.50.1";
-    hyprscroller = {
-      url = "github:cpiber/hyprscroller/d3e447a22cfaae77ab1cf3931d23cfdb7c010a9c";
-      # inputs.hyprland.follows = "hyprland";
-    };
+    # hyprscroller = {
+    #   url = "github:cpiber/hyprscroller/d3e447a22cfaae77ab1cf3931d23cfdb7c010a9c";
+    #   # inputs.hyprland.follows = "hyprland";
+    # };
 
     nix-colors.url = "github:misterio77/nix-colors";
     lanzaboote = {

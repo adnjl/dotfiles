@@ -11,7 +11,7 @@ in
   imports = [
     commonPrograms
     inputs.spicetify-nix.homeManagerModules.default
-    ./swaync.nix
+    ./swaync
     ./rofi
   ];
   # services.dunst = {
@@ -42,16 +42,18 @@ in
         adblock
         hidePodcasts
         shuffle # shuffle+ (special characters are sanitized out of extension names)
+        fullAppDisplay
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
         ncsVisualizer
+        lyricsPlus
       ];
       # enabledSnippets = with spicePkgs.snippets; [
       #   rotatingCoverart
       #   pointer
       # ];
-      theme = lib.mkForce spicePkgs.themes.catppuccin;
-      colorScheme = lib.mkForce "mocha";
+      theme = lib.mkForce spicePkgs.themes.text;
+      colorScheme = lib.mkForce "RosePineMoon";
     };
 }

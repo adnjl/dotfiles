@@ -18,7 +18,7 @@
     plugins = [
       # inputs.hyprland-plugins.packages."${pkgs.system}".hyprspace
       # legacyPackages.x86_64-linux.hyprlandPlugins.hyprspace
-      inputs.hyprscroller.packages."${pkgs.system}".hyprscroller
+      # inputs.hyprscroller.packages."${pkgs.system}".hyprscroller
     ];
     settings = {
       monitor = [

@@ -48,4 +48,5 @@ pkgs: with pkgs; [
   mpv
   nh
   cider
+  papirus-icon-theme
 ]
