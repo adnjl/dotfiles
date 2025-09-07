@@ -11,6 +11,7 @@ pkgs: with pkgs; [
   firefox-devedition
   meson
   pulseaudio
+  hyprpicker
 
   ## Archives
   zip

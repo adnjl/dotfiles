@@ -72,12 +72,13 @@
       "$mod, G, exec, pkill -x rofi || rofi -show window" # Run rofi window switcher
 
       ''$mod, P, exec, grim -g "$(slurp)" - | swappy -f -'' # Screenshot
+      "$mod+Shift, P, exec, hyprpicker -a"
 
       "$mod+Shift, Backspace, exec, wlogout" # show logout menu
 
       "$mod, I, exec, hyprlock"
 
-      "$mod+Shift, P, exec, gpu-screen-recorder -w screen -f 60 -r 5 -c mp4 -k hevc -o /home/aden/Videos/Replays -df yes"
+      "$mod+Shift, Z, exec, gpu-screen-recorder -w screen -f 60 -r 5 -c mp4 -k hevc -o /home/aden/Videos/Replays -df yes"
       "$mod+Shift, Bracketleft, exec, kill -USR1 $(pgrep gpu-screen-reco)"
       # "$mod+Shift, Bracketleft, exec, gpu-screen-recorder -w screen -f 60 -r 30 -c mp4 -o /home/aden/Videos/Replays -df yes"
 

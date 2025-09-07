@@ -27,8 +27,10 @@
         palette = {
           fg = mkRgb "base05";
           bg = mkRgba rofiOpacity "base00";
-          accent = mkRgba rofiOpacity "base0A";
+          accent = mkRgba rofiOpacity "base0D";
           accentText = mkRgb "base01";
+          # accent = mkRgba rofiOpacity "base0A";
+          # accentText = mkRgb "base03";
           muted = mkRgba rofiOpacity "base02";
         };
       in
