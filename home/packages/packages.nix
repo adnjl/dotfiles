@@ -1,6 +1,7 @@
 pkgs: with pkgs; [
   ## Core CLI
   neovim
+  vim
   neofetch
   nnn
   git
