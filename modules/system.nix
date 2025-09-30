@@ -26,6 +26,9 @@
     owner = "root";
     group = "root";
   };
+
+  console.useXkbConfig = true;
+
   security.sudo.wheelNeedsPassword = false;
   nix.settings.trusted-users = [ username ];
 

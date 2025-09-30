@@ -10,18 +10,18 @@ in
   home.packages =
     (createCommon pkgs)
     ++ (with pkgs; [
+      # Programs
       bitwarden-desktop
       prismlauncher
       lutris
       wine
       sbctl
-      # spotify
       r2modman
       signal-desktop
       google-chrome
       bitwarden-cli
 
-      #core
+      # Core
       wl-clipboard
       grim
       slurp
@@ -33,23 +33,20 @@ in
       brightnessctl
       chafa
 
+      # Theming
       bibata-cursors
       libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
       papirus-icon-theme
       libsForQt5.qt5ct
 
-      # system tools
-      pciutils # lspci
-      usbutils # lsusb
-
-      # desktop utils
+      # System Tools
+      pciutils
+      usbutils
       xfce.thunar
 
-      # desktop apps
+      # Desktop Apps
       vesktop
       inputs.zen-browser.packages.${pkgs.system}.default
-      # inputs.viu.packages.${pkgs.system}.default
-
     ]);
 }

@@ -15,17 +15,14 @@
     package = pkgs.hyprland;
     xwayland.enable = true;
     systemd.enable = true;
-    plugins = [
-      # inputs.hyprland-plugins.packages."${pkgs.system}".hyprspace
-      # legacyPackages.x86_64-linux.hyprlandPlugins.hyprspace
-      # inputs.hyprscroller.packages."${pkgs.system}".hyprscroller
-    ];
     settings = {
       monitor = [
-        "DP-1, 1920x1080@144, 0x0, 1"
-        "DP-2, 1920x1080@75, 1920x0, 1"
+        # "DP-1, 1920x1080@144, 0x0, 1"
+        # "DP-2, 1920x1080@75, 1920x0, 1"
+        "HDMI-A-1, 1920x1080@72, 0x0, 1"
       ];
-      workspace = "1, monitor:DP-1";
+      # workspace = "1, monitor:DP-1";
+      workspace = "1, monitor:HDMI-A-1";
       exec-once = [
         "waypaper --restore"
         "swaybg"
@@ -105,6 +102,7 @@
         force_no_accel = 1;
         follow_mouse = 1;
         accel_profile = "flat";
+        kb_options = "ctrl:nocaps";
       };
     };
   };

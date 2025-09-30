@@ -1,5 +1,5 @@
 pkgs: with pkgs; [
-  ## Core CLI
+  # Core
   neovim
   vim
   neofetch
@@ -12,25 +12,24 @@ pkgs: with pkgs; [
   meson
   pulseaudio
   hyprpicker
+  nss
 
-  ## Archives
+  # Archives
   zip
   xz
   unzip
   p7zip
 
-  ## Dev tools
+  # Dev tools
   gcc
   gnumake
   cmake
   pkg-config
   nurl
-
-  ## Programming languages
   go
   cargo
 
-  ## Graphics / GUI
+  # Graphics
   mesa
   libGL
   libGLU
@@ -40,7 +39,7 @@ pkgs: with pkgs; [
   xorg.libXinerama
   xorg.libXi
 
-  ## Misc
+  # Misc
   mupdf
   ani-cli
   gpu-screen-recorder
@@ -49,6 +48,6 @@ pkgs: with pkgs; [
   anki-bin
   mpv
   nh
-  cider
   papirus-icon-theme
+  calcure
 ]

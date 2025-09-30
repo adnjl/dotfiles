@@ -27,7 +27,7 @@
 
   services.printing.enable = true;
   programs.dconf.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   services.openssh = {
     enable = true;
     settings = {

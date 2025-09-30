@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
@@ -12,36 +8,20 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ../../modules/system.nix
     ./hardware-configuration.nix
   ];
 
-  # Bootloader.
-  # boot.loader = {
-  #   efi.canTouchEfiVariables = true;
-  #   timeout = 15;
-  #   # Lanzaboote currently replaces the systemd-boot module.
-  #   # This setting is usually set to true in configuration.nix
-  #   # generated at installation time. So we force it to false
-  #   # for now.
-  #   systemd-boot = {
-  #     enable = lib.mkForce false;
-  #     consoleMode = "auto";
-  #   };
-  # };
+  networking.hostName = "maau";
 
-  # boot.lanzaboote = {
-  #   enable = true;
-  #   pkiBundle = "/etc/secureboot";
-  # };
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 30d";
   };
+
   boot = {
     loader = {
-
+      timeout = 20;
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = false;
@@ -70,7 +50,6 @@
     # kernelPackages = pkgs.linuxPackages_zen;
     kernelPackages = pkgs.linuxPackages_cachyos-gcc;
   };
-  networking.hostName = "maau";
 
   hardware = {
     graphics = {
@@ -83,10 +62,23 @@
       powerManagement.enable = true;
       open = false;
     };
+
+    bluetooth = {
+      enable = true;
+    };
+
+    cpu.amd = {
+      updateMicrocode = true;
+      ryzen-smu.enable = true;
+    };
+
     opentabletdriver.enable = true;
   };
 
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "performance";
+  };
 
   networking.networkmanager.enable = true;
   # networking.wireless.iwd.enable = true;
@@ -94,19 +86,20 @@
 
   services.xserver = {
     enable = true;
+    xkbOptions = "ctrl:nocaps";
     videoDrivers = [ "nvidia" ];
     displayManager.startx.enable = true;
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     options = "";
     variant = "";
   };
 
-  # Miscellaneous
+  services.blueman.enable = true;
+
   programs.hyprland.enable = true;
   services.flatpak.enable = true;
 

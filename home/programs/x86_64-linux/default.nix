@@ -14,9 +14,6 @@ in
     ./swaync
     ./rofi
   ];
-  # services.dunst = {
-  #   enable = true;
-  # };
 
   services.easyeffects = {
     enable = true;
@@ -38,22 +35,22 @@ in
     {
 
       enable = true;
+      alwaysEnableDevTools = true;
+      wayland = false;
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         hidePodcasts
-        shuffle # shuffle+ (special characters are sanitized out of extension names)
+        shuffle
         fullAppDisplay
+        history
       ];
       enabledCustomApps = with spicePkgs.apps; [
-        newReleases
-        ncsVisualizer
         lyricsPlus
+        marketplace
+        betterLibrary
       ];
-      # enabledSnippets = with spicePkgs.snippets; [
-      #   rotatingCoverart
-      #   pointer
-      # ];
+
       theme = lib.mkForce spicePkgs.themes.text;
-      colorScheme = lib.mkForce "RosePineMoon";
+      colorScheme = lib.mkForce "Kanagawa";
     };
 }

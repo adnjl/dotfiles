@@ -23,9 +23,10 @@
           "custom/menu"
           "custom/separator#blank_2"
           "clock"
-          "custom/separator#blank_2"
-          "hyprland/window"
+          # "custom/separator#blank_2"
+          # "hyprland/window"
         ];
+
         modules-center = [
           "hyprland/workspaces"
         ];
@@ -152,7 +153,7 @@
         };
 
         "custom/menu" = {
-          format = "{}";
+          format = "{}";
           exec = "echo ; echo 󱓟 app launcher";
           interval = 86400;
           tooltip = true;

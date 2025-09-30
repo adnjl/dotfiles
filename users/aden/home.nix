@@ -7,7 +7,7 @@
 {
   imports = [
     ../../home/core.nix
-    ../../home/system-env/${system}
+    ../../home/platform-configs/${system}
     ../../home/packages/${system}
   ];
 }

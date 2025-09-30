@@ -9,9 +9,7 @@
 {
   imports = [
     ../../home/core.nix
-    ../../home/desktop/shell
-    ../../home/packages/${system}
-    ../../home/programs
+    ../../home/platform-configs/aarch64-linux
   ];
 
   home.homeDirectory = lib.mkForce "/Users/soems";
