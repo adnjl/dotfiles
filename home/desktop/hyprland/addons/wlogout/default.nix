@@ -32,7 +32,7 @@ in
       }
       {
         label = "hibernate";
-        action = "swaylock -f && systemctl hibernate";
+        action = "systemctl hibernate";
         text = "Hibernate";
         keybind = "h";
       }

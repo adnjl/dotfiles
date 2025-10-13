@@ -15,6 +15,8 @@
     package = pkgs.hyprland;
     xwayland.enable = true;
     systemd.enable = true;
+
+    # plugins = [ inputs.hyprscroller ];
     settings = {
       monitor = [
         # "DP-1, 1920x1080@144, 0x0, 1"
@@ -45,7 +47,7 @@
         preserve_split = "yes";
       };
       animations = {
-        enabled = "no";
+        enabled = "yes";
         bezier = [
           "wind, 0.05, 0.9, 0.1, 1.05"
           "winIn, 0.1, 1.1, 0.1, 1.1"
@@ -84,7 +86,7 @@
       };
 
       decoration = {
-        rounding = "1";
+        rounding = "3";
         # drop_shadow = "false";
         dim_special = "0.3";
         blur = {

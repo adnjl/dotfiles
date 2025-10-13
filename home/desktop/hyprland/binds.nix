@@ -6,7 +6,7 @@
       # Application Keybinds
       "$mod, B, exec, firefox-devedition"
       "$mod, T, exec, kitty"
-      "$mod, E, exec, thunar"
+      "$mod, E, exec, dolphin"
       "$mod, R, exec, pavucontrol"
 
       # Window actions

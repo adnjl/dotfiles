@@ -51,8 +51,11 @@
       rebuild = "nh os switch";
     };
     interactiveShellInit = ''
-      fish_vi_key_bindings
-      set -g fish_greeting
+      if test -n "$DISTROBOX_HOST"
+        functions -e ls 2>/dev/null
+      end
+        fish_vi_key_bindings
+        set -g fish_greeting
     '';
     plugins = [
       {

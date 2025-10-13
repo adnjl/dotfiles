@@ -2,7 +2,7 @@ pkgs: with pkgs; [
   # Core
   neovim
   vim
-  neofetch
+  fastfetch
   nnn
   git
   wget
@@ -50,4 +50,8 @@ pkgs: with pkgs; [
   nh
   papirus-icon-theme
   calcure
+  yt-dlp
+  ffmpeg
+
+  openconnect
 ]

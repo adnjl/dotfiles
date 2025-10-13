@@ -6,6 +6,7 @@
 
     osu-lazer-bin
     mangohud
+    lunar-client
   ];
 
   programs.gamescope.enable = true;

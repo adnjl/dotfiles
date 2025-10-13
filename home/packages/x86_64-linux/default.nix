@@ -43,10 +43,13 @@ in
       # System Tools
       pciutils
       usbutils
-      xfce.thunar
+      # xfce.thunar
+      kdePackages.dolphin
+      kdePackages.qtsvg
 
       # Desktop Apps
       vesktop
       inputs.zen-browser.packages.${pkgs.system}.default
+      # inputs.openconnect-pulse-launcher.packages."${pkgs.system}".openconnect-pulse-launcher
     ]);
 }

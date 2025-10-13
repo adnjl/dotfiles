@@ -35,10 +35,15 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    # hyprscroller = {
-    #   url = "github:cpiber/hyprscroller/d3e447a22cfaae77ab1cf3931d23cfdb7c010a9c";
-    #   # inputs.hyprland.follows = "hyprland";
-    # };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprscroller = {
+      url = "github:cpiber/hyprscroller/01a10147fe0a86e35674b7e8be68fd8a38c7445f";
+      # inputs.hyprland.follows = "hyprland";
+    };
 
     nix-colors.url = "github:misterio77/nix-colors";
     lanzaboote = {
@@ -74,12 +79,18 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
     };
+
+    openconnect-pulse-launcher = {
+      url = "github:erahhal/openconnect-pulse-launcher";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{
       nixpkgs,
       home-manager,
+      nix-ld,
       nix-darwin,
       ...
     }:
@@ -103,6 +114,7 @@
               inputs.chaotic.nixosModules.nyx-cache
               inputs.chaotic.nixosModules.nyx-overlay
               inputs.chaotic.nixosModules.nyx-registry
+              nix-ld.nixosModules.nix-ld
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -111,6 +123,7 @@
                   extraSpecialArgs = inputs // specialArgs;
                   users.${username} = import ./users/${username}/home.nix;
                 };
+                programs.nix-ld.dev.enable = true;
               }
             ];
           };

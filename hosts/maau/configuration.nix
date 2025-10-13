@@ -42,6 +42,7 @@
             halt
           }
         '';
+        theme = lib.mkForce ../../components/grub-themes/virtuaverse;
       };
     };
     kernelParams = [ "nvidia_drm.modeset=1" ];
@@ -99,6 +100,13 @@
   };
 
   services.blueman.enable = true;
+  # Enable Podman
+  virtualisation.podman.enable = true;
+
+  # Install distrobox
+  environment.systemPackages = with pkgs; [
+    distrobox
+  ];
 
   programs.hyprland.enable = true;
   services.flatpak.enable = true;
