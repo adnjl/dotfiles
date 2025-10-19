@@ -52,6 +52,6 @@ pkgs: with pkgs; [
   calcure
   yt-dlp
   ffmpeg
-
+  wakatime-cli
   openconnect
 ]

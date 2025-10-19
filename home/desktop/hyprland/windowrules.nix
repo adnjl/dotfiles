@@ -79,6 +79,8 @@
       "blur,swaync-control-center"
       "ignorezero,swaync-control-center"
       "blur,logout_dialog"
+      "blur,waybar"
+      "ignorezero,waybar"
     ];
   };
 }

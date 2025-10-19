@@ -32,6 +32,7 @@ in
       pamixer
       brightnessctl
       chafa
+      hyprlandPlugins.hyprscrolling
 
       # Theming
       bibata-cursors
@@ -50,6 +51,6 @@ in
       # Desktop Apps
       vesktop
       inputs.zen-browser.packages.${pkgs.system}.default
-      # inputs.openconnect-pulse-launcher.packages."${pkgs.system}".openconnect-pulse-launcher
+      zoom-us
     ]);
 }

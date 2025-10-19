@@ -23,12 +23,6 @@
           "custom/menu"
           "custom/separator#blank_2"
           "clock"
-          # "custom/separator#blank_2"
-          # "hyprland/window"
-        ];
-
-        modules-center = [
-          "hyprland/workspaces"
         ];
 
         modules-right = [
@@ -141,7 +135,6 @@
           format = "{format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
-          # on-click = "pavucontrol -t 4";
           on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
           tooltip-format = "{source_desc} | {source_volume}%";
           scroll-step = 5;
@@ -158,8 +151,6 @@
           interval = 86400;
           tooltip = true;
           on-click = "pkill rofi || rofi -show drun -modi run;drun,filebrowser,window";
-          # "on-click-middle"= "~/.config/hypr/scripts/wallpaperSelect.sh";
-          # "on-click-right"= "~/.config/hypr/scripts/WaybarLayout.sh";
         };
 
         "custom/power" = {
@@ -191,7 +182,6 @@
           escape = true;
         };
 
-        ## Separators
         "custom/separator#dot" = {
           format = "";
           interval = "once";

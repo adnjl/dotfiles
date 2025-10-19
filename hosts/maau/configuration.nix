@@ -19,13 +19,19 @@
     options = "--delete-older-than 30d";
   };
 
+  systemd = {
+    tpm2.enable = false;
+  };
+
   boot = {
+    initrd.luks.devices."luks-614153e3-61be-43f4-b833-d19e3d83db0a".device =
+      "/dev/disk/by-uuid/614153e3-61be-43f4-b833-d19e3d83db0a";
     loader = {
-      timeout = 20;
+      timeout = 25;
       efi.canTouchEfiVariables = true;
       systemd-boot = {
-        enable = false;
-        consoleMode = "auto";
+        enable = lib.mkForce false;
+        consoleMode = "0";
       };
       grub = {
         enable = true;
@@ -58,9 +64,11 @@
     };
 
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
       powerManagement.enable = true;
+      powerManagement.finegrained = false;
+      nvidiaSettings = true;
       open = false;
     };
 
@@ -82,28 +90,23 @@
   };
 
   networking.networkmanager.enable = true;
-  # networking.wireless.iwd.enable = true;
-  # networking.networkmanager.wifi.backend = "iwd";
 
   services.xserver = {
     enable = true;
-    xkbOptions = "ctrl:nocaps";
     videoDrivers = [ "nvidia" ];
     displayManager.startx.enable = true;
+    xkb = {
+      layout = "us";
+      options = "ctrl:nocaps";
+      variant = "";
+    };
+
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  services.xserver.xkb = {
-    layout = "us";
-    options = "";
-    variant = "";
-  };
-
   services.blueman.enable = true;
-  # Enable Podman
   virtualisation.podman.enable = true;
 
-  # Install distrobox
   environment.systemPackages = with pkgs; [
     distrobox
   ];
@@ -117,6 +120,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }

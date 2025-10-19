@@ -40,11 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprscroller = {
-      url = "github:cpiber/hyprscroller/01a10147fe0a86e35674b7e8be68fd8a38c7445f";
-      # inputs.hyprland.follows = "hyprland";
-    };
-
     nix-colors.url = "github:misterio77/nix-colors";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -78,11 +73,6 @@
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-    };
-
-    openconnect-pulse-launcher = {
-      url = "github:erahhal/openconnect-pulse-launcher";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
